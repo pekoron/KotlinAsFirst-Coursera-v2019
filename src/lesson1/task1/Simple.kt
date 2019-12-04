@@ -2,7 +2,11 @@
 
 package lesson1.task1
 
-import kotlin.math.*
+import org.junit.Test
+import kotlin.math.PI
+import kotlin.math.sqrt
+
+//import kotlin.math.*
 
 /**
  * Пример
@@ -10,6 +14,10 @@ import kotlin.math.*
  * Вычисление квадрата целого числа
  */
 fun sqr(x: Int) = x * x
+//fun main(args: Array<String>) {
+//    val result = sqr(7)
+//    println("7 * 7 = $result")
+//}
 
 /**
  * Пример
@@ -32,6 +40,7 @@ fun discriminant(a: Double, b: Double, c: Double) = sqr(b) - 4 * a * c
  */
 fun quadraticEquationRoot(a: Double, b: Double, c: Double) =
     (-b + sqrt(discriminant(a, b, c))) / (2 * a)
+
 
 /**
  * Пример
@@ -61,6 +70,7 @@ fun main() {
  */
 fun seconds(hours: Int, minutes: Int, seconds: Int): Int = TODO()
 
+
 /**
  * Тривиальная
  *
@@ -77,7 +87,16 @@ fun lengthInMeters(sagenes: Int, arshins: Int, vershoks: Int): Double = TODO()
  * Вывести значение того же угла в радианах (например, 0.63256).
  */
 fun angleInRadian(deg: Int, min: Int, sec: Int): Double = TODO()
+/*fun main(args: Array<String>){
+    val deg = 36
+    val min = 14
+    val sec = 35
+    val result_deg: Double = ((deg * PI) / 180) + ((min * PI) / (180 * 60)) + ((sec * PI) / (180 * 60 * 60))
+    println("$result_deg")
 
+}
+
+ */
 /**
  * Тривиальная
  *
@@ -93,6 +112,11 @@ fun trackLength(x1: Double, y1: Double, x2: Double, y2: Double): Double = TODO()
  * Определить третью цифру справа в этом числе (в данном случае 8).
  */
 fun thirdDigit(number: Int): Int = TODO()
+fun main(args: Array<String>){
+    val nun = 8643
+    val result = ((nun / 100) % 10)
+    println("$result")
+}
 
 /**
  * Простая
