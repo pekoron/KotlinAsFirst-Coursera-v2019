@@ -150,8 +150,41 @@ fun rookOrBishopThreatens(
  * Если такой треугольник не существует, вернуть -1.
  */
 fun triangleKind(a: Double, b: Double, c: Double): Int {
+    val maxi = maxOf(a, b, c)
+    val side1: Double
+    val side2: Double
+    when (maxi) {
+        a -> {
+            side1 = b
+            side2 = c
+        }
+        b -> {
+            side1 = a
+            side2 = c
+        }
+        else -> {
+            side1 = a
+            side2 = b
+        }
+    }
+    if (a + b > c && a + c > b && b + c > a) { // треугольник ли это
+        return when {
+            ((sqr(side1) + sqr(side2) - sqr(maxi)) / 2 * side1 * side2) > 0 -> { // остроугольный треугольник
+                0
+            }
+            ((sqr(side1) + sqr(side2) - sqr(maxi)) / 2 * side1 * side2) < 0 -> { // тупо угольный
+                2
+            }
+
+            else -> { // если косинус 1, то прямоугольный
+                1
+            }
+        }
+    } else // не треугольник ваще
+        return -1
 
 }
+
 
 /**
  * Средняя
