@@ -150,24 +150,7 @@ fun rookOrBishopThreatens(
  * Если такой треугольник не существует, вернуть -1.
  */
 fun triangleKind(a: Double, b: Double, c: Double): Int {
-    return if (a + b > c && a + c > b && b + c > a) { // треугольник ли?
-        return when {
-            a == b || a == c || b == c -> { // равнобедренный треугольник
-                0
-            }
-            (sqr(a) - (sqr(b) + sqr(c))) / (2 * b * c) > 0 -> { // остроугольный
-                0
-            }
-            (sqr(a) - (sqr(b) + sqr(c))) / (2 * b * c) < 0 -> { // тупоугольный
-                2
-            }
 
-            else -> { // если  ничего не подошло, то прямоугольный
-                1
-            }
-        }
-    } else
-        return -1
 }
 
 /**
