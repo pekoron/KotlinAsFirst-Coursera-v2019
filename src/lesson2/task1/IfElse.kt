@@ -1,8 +1,10 @@
-@file:Suppress("UNUSED_PARAMETER")
+@file:Suppress("UNUSED_PARAMETER", "UNREACHABLE_CODE")
 
 package lesson2.task1
 
 import lesson1.task1.discriminant
+import lesson1.task1.sqr
+import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.sqrt
 
@@ -147,7 +149,26 @@ fun rookOrBishopThreatens(
  * прямоугольным (вернуть 1) или тупоугольным (вернуть 2).
  * Если такой треугольник не существует, вернуть -1.
  */
-fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
+fun triangleKind(a: Double, b: Double, c: Double): Int {
+    return if (a + b > c && a + c > b && b + c > a) { // треугольник ли?
+        return when {
+            a == b || a == c || b == c -> { // равносторонний треугольник
+                0
+            }
+            (sqr(a) - (sqr(b) + sqr(c))) / (2 * b * c) > 0 -> { // остроугольный
+                0
+            }
+            (sqr(a) - (sqr(b) + sqr(c))) / (2 * b * c) < 0 -> { // тупоугольный
+                2
+            }
+
+            else -> { // если  ничего не подошло, то прямоугольный
+                1
+            }
+        }
+    } else
+        return -1
+}
 
 /**
  * Средняя
