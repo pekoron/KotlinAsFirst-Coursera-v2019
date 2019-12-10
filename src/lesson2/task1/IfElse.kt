@@ -123,7 +123,18 @@ fun whichRookThreatens(
     kingX: Int, kingY: Int,
     rookX1: Int, rookY1: Int,
     rookX2: Int, rookY2: Int
-): Int = TODO()
+): Int {
+    if ((kingX == rookX1) || (kingX == rookX2) && (kingY == rookY1) || (kingY == rookY2)) { // если от обоих
+        return 3
+    }
+    if (kingX == rookX1 || kingY == rookY1) { // если угроза от первой ладьи
+        return 1
+    }
+    if (kingX == rookX2 || kingY == rookY2) { // если угроза от второй ладьи
+        return 2
+    } else return 0 // если не от кого
+}
+
 
 /**
  * Простая
