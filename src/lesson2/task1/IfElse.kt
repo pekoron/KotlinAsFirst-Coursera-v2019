@@ -4,9 +4,12 @@ package lesson2.task1
 
 import lesson1.task1.discriminant
 import lesson1.task1.sqr
+import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.sqrt
+import java.lang.Math.abs as abs1
+import kotlin.math.sqrt as sqrt1
 
 /**
  * Пример
@@ -46,17 +49,17 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
         if (b == 0.0) return Double.NaN // ... и ничего больше не делать
         val bc = -c / b
         if (bc < 0.0) return Double.NaN // ... и ничего больше не делать
-        return -sqrt(bc)
+        return -sqrt1(bc)
         // Дальше функция при a == 0.0 не идёт
     }
     val d = discriminant(a, b, c)   // 2
     if (d < 0.0) return Double.NaN  // 3
     // 4
-    val y1 = (-b + sqrt(d)) / (2 * a)
-    val y2 = (-b - sqrt(d)) / (2 * a)
+    val y1 = (-b + sqrt1(d)) / (2 * a)
+    val y2 = (-b - sqrt1(d)) / (2 * a)
     val y3 = max(y1, y2)       // 5
     if (y3 < 0.0) return Double.NaN // 6
-    return -sqrt(y3)           // 7
+    return -sqrt1(y3)           // 7
 }
 
 /**
@@ -150,7 +153,19 @@ fun rookOrBishopThreatens(
     kingX: Int, kingY: Int,
     rookX: Int, rookY: Int,
     bishopX: Int, bishopY: Int
-): Int = TODO()
+): Int {
+    val triangleMiniX = (bishopX - kingX) // значение длины катета мальньком треугольнике
+    val triangleMiniY = (bishopY - kingY) // значение второго катета
+    if ((kingX == rookX || kingY == rookY) && (abs(triangleMiniX) == abs1(triangleMiniY))) { // если оба катета и одна из коортинат совпадает
+        return 3
+    }
+    if (kingX == rookX || kingY == rookY) { // совпадает одна из коортинат
+        return 1
+    }
+    if (abs(triangleMiniX) == abs1(triangleMiniY)) { // два катета одной длины
+        return 2
+    } else return 0
+}
 
 /**
  * Простая
