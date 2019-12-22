@@ -133,7 +133,16 @@ fun maxDivisor(n: Int): Int = TODO()
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-fun isCoPrime(m: Int, n: Int): Boolean = TODO()
+fun isCoPrime(m: Int, n: Int): Boolean {
+    if ((m % 2 == 0) && (n % 2 == 0)) return false //если делиться на 2, значит уже не простое
+    if ((n == m + 1) || (m == n + 1)) return true // если числа стоят друг за другом
+    if ((m % n == 0) || (n % m == 0)) return false //если делятся друг на друга
+    for (nm in 3 until sqrt(m.toDouble()).toInt() step 2) { // от трех до корня из одного числа с шагом два
+        if ((n % nm == 0) && (m % nm == 0)) return false //если делятся оба на nm без остатка
+    }
+
+    return true
+}
 
 /**
  * Простая
