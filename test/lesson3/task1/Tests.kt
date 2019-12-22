@@ -85,7 +85,7 @@ class Tests {
         assertEquals(1134903170, fib(45))
         assertEquals(1836311903, fib(46))
         // Just to calculate it
-        fib(50)
+        assertEquals(12586269025, fib(50)) // нужно задать переменную не Int, а Long
     }
 
     @Test
