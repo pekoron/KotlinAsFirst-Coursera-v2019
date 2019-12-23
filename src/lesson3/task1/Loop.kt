@@ -75,9 +75,8 @@ fun digitNumber(n: Int): Int = TODO()
  * Найти число Фибоначчи из ряда 1, 1, 2, 3, 5, 8, 13, 21, ... с номером n.
  * Ряд Фибоначчи определён следующим образом: fib(1) = 1, fib(2) = 1, fib(n+2) = fib(n) + fib(n+1)
  */
-
-fun fib(n: Int): Long { //long чтобы посчитать fib(50)
-    // решение рекурсией, 37 секунд
+/*
+fun fib(n: Int): Long { //long чтобы посчитать fib(50) // решение рекурсией, 37 секунд
     return if (n in 1..2) {
         1
     } else {
@@ -85,9 +84,11 @@ fun fib(n: Int): Long { //long чтобы посчитать fib(50)
     }
 
 }
+*/
+
 
 // решение циклом, 14 миллисекунд
-/*
+
 fun fib(n: Long): Long { // long чтобы посчитать fib(50)
     var result = 1L
     var result1 = 1L // fib(1)
@@ -103,14 +104,28 @@ fun fib(n: Long): Long { // long чтобы посчитать fib(50)
     return result
 
 }
-*/
+
 /**
  * Простая
  *
  * Для заданных чисел m и n найти наименьшее общее кратное, то есть,
  * минимальное число k, которое делится и на m и на n без остатка
  */
-fun lcm(m: Int, n: Int): Int = TODO()
+fun lcm(m: Int, n: Int): Int {
+    var nod: Int
+    var m1 = m
+    var n1 = n
+    //ищем НОД
+    if (m == n) return n
+    while (m1 != 0 && n1 != 0) {
+        if (m1 > n1) m1 %= n1
+        else n1 %= m1
+    }
+    nod = n1 + m1
+    // находим НОК
+    return (m * n) / nod
+
+}
 
 /**
  * Простая
